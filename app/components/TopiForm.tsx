@@ -7,7 +7,8 @@ import { submitTopiStory } from '@/lib/pocketbaseService';
 
 import { useState } from 'react';
 
-export default function TopiForm({ onSuccess }: { onSuccess?: () => void }) {
+export default function TopiForm() {
+
 
   const [name, setName] = useState('');
   const [intro, setIntro] = useState('');
