@@ -28,7 +28,7 @@ export default function TopiForm() {
       setName('');
       setIntro('');
       setImage(null);
-    } catch (error) {
+    } catch {
       alert('There was an error submitting your story.');
     }
   };
