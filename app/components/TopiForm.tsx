@@ -22,7 +22,7 @@ export default function TopiForm() {
       setName('');
       setIntro('');
       setImage(null);
-    } catch (error) {
+    } catch {
       alert('There was an error submitting your story.');
     }
   };
@@ -33,7 +33,7 @@ export default function TopiForm() {
         type="text"
         placeholder="Topi Name"
         value={name}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+        onChange={(e) => setName(e.target.value)}
         required
         style={{
           display: 'block',
@@ -51,7 +51,7 @@ export default function TopiForm() {
       <textarea
         placeholder="Topi Intro"
         value={intro}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setIntro(e.target.value)}
+        onChange={(e) => setIntro(e.target.value)}
         required
         style={{
           display: 'block',
@@ -70,7 +70,7 @@ export default function TopiForm() {
       <input
         type="file"
         accept="image/*"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange={(e) => {
           const file = e.target.files?.[0];
           if (file) setImage(file);
         }}
@@ -92,4 +92,3 @@ export default function TopiForm() {
     </form>
   );
 }
-
