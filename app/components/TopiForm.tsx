@@ -40,7 +40,8 @@ export default function TopiForm() {
         type="text"
         placeholder="Topi Name"
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+
         required
         style={{
           display: 'block',
@@ -60,7 +61,8 @@ export default function TopiForm() {
       <textarea
         placeholder="Topi Intro"
         value={intro}
-        onChange={(e) => setIntro(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setIntro(e.target.value)}
+
         required
         style={{
           display: 'block',
@@ -80,10 +82,11 @@ fontWeight: '600',
       <input
         type="file"
         accept="image/*"
-        onChange={(e) => {
-          const file = e.target.files?.[0];
-          if (file) setImage(file);
-        }}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            const file = e.target.files?.[0];
+            if (file) setImage(file);
+          }}
+          
         style={{ display: 'block', marginBottom: '1rem' }}
       />
       <button
