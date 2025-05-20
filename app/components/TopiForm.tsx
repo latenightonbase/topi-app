@@ -1,38 +1,31 @@
 'use client';
 
 import { submitTopiStory } from '@/lib/pocketbaseService';
-
-
-
-
 import { useState } from 'react';
 
 export default function TopiForm() {
-
-
   const [name, setName] = useState('');
   const [intro, setIntro] = useState('');
   const [image, setImage] = useState<File | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
+
     if (!name || !intro || !image) {
       alert('Please fill out all fields and upload an image.');
       return;
     }
-  
+
     try {
       await submitTopiStory({ name, intro, image });
       alert('Topi story submitted successfully!');
       setName('');
       setIntro('');
       setImage(null);
-    } catch {
+    } catch (error) {
       alert('There was an error submitting your story.');
     }
   };
-  
 
   return (
     <form onSubmit={handleSubmit} style={{ marginTop: '2rem' }}>
@@ -41,7 +34,6 @@ export default function TopiForm() {
         placeholder="Topi Name"
         value={name}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-
         required
         style={{
           display: 'block',
@@ -51,8 +43,6 @@ export default function TopiForm() {
           backgroundColor: '#fff',
           color: '#111',
           fontWeight: '600',
-          
-
           fontSize: '16px',
           border: '2px solid #ccc',
           borderRadius: '6px',
@@ -62,7 +52,6 @@ export default function TopiForm() {
         placeholder="Topi Intro"
         value={intro}
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setIntro(e.target.value)}
-
         required
         style={{
           display: 'block',
@@ -71,8 +60,7 @@ export default function TopiForm() {
           width: '100%',
           backgroundColor: '#fff',
           color: '#111',
-fontWeight: '600',
-
+          fontWeight: '600',
           fontSize: '16px',
           border: '2px solid #ccc',
           borderRadius: '6px',
@@ -83,10 +71,9 @@ fontWeight: '600',
         type="file"
         accept="image/*"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const file = e.target.files?.[0];
-            if (file) setImage(file);
-          }}
-          
+          const file = e.target.files?.[0];
+          if (file) setImage(file);
+        }}
         style={{ display: 'block', marginBottom: '1rem' }}
       />
       <button
@@ -105,3 +92,4 @@ fontWeight: '600',
     </form>
   );
 }
+
